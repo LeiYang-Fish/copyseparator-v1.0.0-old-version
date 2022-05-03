@@ -4,13 +4,13 @@
 #'
 #' @param filename A fasta file containing thousands of short reads that have been mapped to a reference gene.
 #'
-#' @param copy_number An interger (e.g. 2,3, or 4) giving the expected number of gene copies in the input file.
+#' @param copy_number An integer (e.g. 2,3, or 4) giving the expected number of gene copies in the input file.
 #'
-#' @param read_length An interger (e.g. 250, or 300) giving the read length of your Next-generation Sequencing data. This method is designed for read length 250bp or longer.
+#' @param read_length An integer (e.g. 250, or 300) giving the read length of your Next-generation Sequencing data. This method is designed for read length 250bp or longer.
 #'
-#' @param overlap An interger giving how many base pairs of overlap between adjacent subsets. Must be smaller than read_length. Default 225.
+#' @param overlap An integer giving how many base pairs of overlap between adjacent subsets. Must be smaller than read_length. Default 225.
 #'
-#' @param lower_threshold A decimal (range: 0.01-0.99) giving the OTU identity cutoff for divisive heirarchical clustering analyses.Default 0.4.
+#' @param lower_threshold A decimal (range: 0.01-0.99) giving the OTU identity cutoff for divisive hierarchical clustering analyses.Default 0.4.
 #'
 #' @param kmer An integer giving the k-mer size used to generate the input matrix for k-means clustering. Default 5.
 #'

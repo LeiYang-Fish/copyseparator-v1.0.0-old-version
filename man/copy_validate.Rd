@@ -9,9 +9,9 @@ copy_validate(filename, copy_number, read_length)
 \arguments{
 \item{filename}{A DNA alignment in fasta format that contains sequences of two or more gene copies.}
 
-\item{copy_number}{An interger (e.g. 2,3, or 4) giving the number of gene copies in the input file.}
+\item{copy_number}{An integer (e.g. 2,3, or 4) giving the number of gene copies in the input file.}
 
-\item{read_length}{An interger (e.g. 250, or 300) giving the read length of your Next-generation Sequencing data.}
+\item{read_length}{An integer (e.g. 250, or 300) giving the read length of your Next-generation Sequencing data.}
 }
 \value{
 A histogram in pdf format showing the comparison between the distance among neighboring variable sites and the read length.

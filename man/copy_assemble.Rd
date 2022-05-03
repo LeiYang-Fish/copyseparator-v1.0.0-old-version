@@ -9,7 +9,7 @@ copy_assemble(filename, copy_number)
 \arguments{
 \item{filename}{A fasta alignment of a small number of overlapping DNA sequences (results from "copy_separate") covering the entire length of the target gene.}
 
-\item{copy_number}{An interger (e.g. 2,3, or 4) giving the expected number of gene copies. Must be the same value as used for "copy_separate".}
+\item{copy_number}{An integer (e.g. 2,3, or 4) giving the expected number of gene copies. Must be the same value as used for "copy_separate".}
 }
 \value{
 A fasta alignment of assembled sequences of the expected number of full-length gene copies.

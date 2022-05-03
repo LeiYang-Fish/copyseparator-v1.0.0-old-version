@@ -4,9 +4,9 @@
 #'
 #' @param filename A fasta file containing thousands of short reads that have been mapped to a reference gene.
 #'
-#' @param read_length An interger (e.g. 250, or 300) giving the read length of your Next-generation sequencing data. This method is designed for read length 250bp or longer.
+#' @param read_length An integer (e.g. 250, or 300) giving the read length of your Next-generation sequencing data. This method is designed for read length 250bp or longer.
 #'
-#' @param overlap An interger giving how many base pairs of overlap between adjacent subsets. Must be smaller than "read_length".
+#' @param overlap An integer giving how many base pairs of overlap between adjacent subsets. Must be smaller than "read_length".
 #'
 #' @return A number of overlapping subsets of the input alignment. More overlap means more subsets, but not fewer reads per subset.
 #'
