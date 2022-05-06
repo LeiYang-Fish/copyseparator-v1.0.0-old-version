@@ -4,18 +4,20 @@
 \alias{subset_downsize}
 \title{subset_downsize}
 \usage{
-subset_downsize(filename, read_length, overlap)
+subset_downsize(filename, read_length, overlap, verbose = 1)
 }
 \arguments{
-\item{filename}{A fasta file containing thousands of short reads that have been mapped to a reference gene.}
+\item{filename}{A fasta file contains thousands of short reads that have been mapped to a reference. The reference and reads that are not directly mapped to the reference need to be removed after mapping.}
 
-\item{read_length}{An integer (e.g. 250, or 300) giving the read length of your Next-generation sequencing data. This method is designed for read length 250bp or longer.}
+\item{read_length}{An integer (e.g. 250, or 300) giving the read length of your Next-generation Sequencing data. This method is designed for read length >=250bp.}
 
-\item{overlap}{An integer giving how many base pairs of overlap between adjacent subsets. Must be smaller than "read_length".}
+\item{overlap}{An integer describing number of base pairs of overlap between adjacent subsets. More overlap means more subsets.}
+
+\item{verbose}{Turn on (verbose=1; default) or turn off (verbose=0) the output.}
 }
 \value{
-A number of overlapping subsets of the input alignment. More overlap means more subsets, but not fewer reads per subset.
+A number of overlapping subsets (before and after downsizing) of the input alignment.
 }
 \description{
-This function subdivides the imported read alignment into subsets and then downsizes each subset by deleting those sequences that have too many gaps or missing data.
+Subdivides the imported read alignment into subsets and then downsizes each subset by deleting those sequences that have too many gaps or missing data.
 }

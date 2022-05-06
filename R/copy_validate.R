@@ -1,6 +1,6 @@
 #' @title copy_validate
 #'
-#' @description This function checks if chimeric sequences may have been formed during the assembling of gene copies.
+#' @description A tool to help identify incorrectly assembled chimeric sequences.
 #'
 #' @param filename A DNA alignment in fasta format that contains sequences of two or more gene copies.
 #'
@@ -8,7 +8,9 @@
 #'
 #' @param read_length An integer (e.g. 250, or 300) giving the read length of your Next-generation Sequencing data.
 #'
-#' @return A histogram in pdf format showing the comparison between the distance among neighboring variable sites and the read length.
+#' @param verbose Turn on (verbose=1; default) or turn off (verbose=0) the output.
+#'
+#' @return A histogram in pdf format showing the relationships between the physical distance between neighboring variable sites and read length.
 #'
 #' @importFrom seqinr read.fasta
 #'
@@ -21,7 +23,7 @@
 #' @export copy_validate
 #'
 
-copy_validate<-function(filename,copy_number,read_length)
+copy_validate<-function(filename,copy_number,read_length, verbose=1)
 {
   sink("log.txt", append=FALSE, split=TRUE) # begin to record log
   error_log_function <- function() {
@@ -37,7 +39,7 @@ copy_validate<-function(filename,copy_number,read_length)
 
       dist_var_sites <- sapply(2:length(Paralog_diff), function(x) Paralog_diff[x]-Paralog_diff[x-1])
       all_dist <- append(all_dist,  dist_var_sites)
-      cat(paste0("Copy ", i, " and Copy ", j, " is different at site: ", Paralog_diff,"\n"))
+      if (verbose) { cat(paste0("Copy ", i, " and Copy ", j, " is different at site: ", Paralog_diff,"\n"))}
     }
   }
 
@@ -48,18 +50,20 @@ copy_validate<-function(filename,copy_number,read_length)
 
   text_to_show <- "read_length"
 
-  grDevices::pdf(file="Variable sites distribution among gene copies.pdf", width=8, height=8)
+  grDevices::pdf(file="Distance between neighboring variable sites VS. Read length.pdf", width=8, height=8)
 
-  graphics::hist(dist_final,main="Distance among neighboring variable sites VS. Read length", xlab="Base pairs",
+  graphics::hist(dist_final,main="Distance between neighboring variable sites VS. Read length", xlab="Base pairs",
        ylim=c(0,length(dist_final)/2),xlim=c(0,read_length+100),breaks=20,col="blue")
 
   graphics::abline(v=read_length, col="red", lwd=3, lty=2)
   graphics::text(read_length, length(dist_final)/2, text_to_show, pos = 4, offset = 0.5)
 
+  cat('Run finished! Please check results in the file: "Distance between neighboring variable sites VS. read length.pdf"',"\n")
+
   beepr::beep(sound = 1, expr = NULL) # make a sound when run finishes
   options("error" = error_log_function)
   sink() # turn off log
-  grDevices::dev.off()
+  invisible(grDevices::dev.off())
 }
 
 

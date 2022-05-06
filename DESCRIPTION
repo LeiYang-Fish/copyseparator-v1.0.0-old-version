@@ -1,10 +1,10 @@
 Package: copyseparator
 Type: Package
-Title: A Method for Assembling Two or more Gene Copies from Short Next-Generation Sequencing Reads
+Title: Assembling Long Gene Copies from Short Read Data
 Version: 1.0
 Author: Lei Yang
 Maintainer: Lei Yang <leiyangslu@gmail.com>
-Description: Assembles two or more gene copies from short Next-Generation Sequencing reads. Works best when there are only two gene copies. The read length should be 250bp or longer. High (e.g. >=10,000) and relatively even coverage are important because clustering analyses will be performed on the subsets of the read alignment. This methods works well for NGS-sequenced PCR amplicons.
+Description: Assembles two or more gene copies from short-read Next-Generation Sequencing data. Works best when there are only two gene copies and read length >=250bp. High and relatively even coverage are important.
 License: GPL-2
 URL: https://github.com/LeiYang-Fish/copyseparator
 BugReports: https://github.com/LeiYang-Fish/copyseparator/issues

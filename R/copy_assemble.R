@@ -1,12 +1,14 @@
 #' @title copy_assemble
 #'
-#' @description This function assembles a small number of overlapping DNA sequences into long gene copies
+#' @description Assembles a small number of overlapping DNA sequences into their respective gene copies.
 #'
-#' @param filename A fasta alignment of a small number of overlapping DNA sequences (results from "copy_separate") covering the entire length of the target gene.
+#' @param filename A fasta alignment of a small number of overlapping DNA sequences (results from "copy_separate") covering the entire length of the target gene. Check the alignment carefully before proceeding.
 #'
-#' @param copy_number An integer (e.g. 2,3, or 4) giving the expected number of gene copies. Must be the same value as used for "copy_separate".
+#' @param copy_number An integer (e.g. 2,3, or 4) giving the anticipated number of gene copies. Must be the same value as used for "copy_separate".
 #'
-#' @return A fasta alignment of assembled sequences of the expected number of full-length gene copies.
+#' @param verbose Turn on (verbose=1; default) or turn off (verbose=0) the output.
+#'
+#' @return A fasta alignment of the anticipated number of full-length gene copies.
 #'
 #' @importFrom seqinr read.fasta write.fasta
 #'
@@ -21,7 +23,7 @@
 #' @export copy_assemble
 #'
 
-copy_assemble<-function(filename,copy_number)
+copy_assemble<-function(filename,copy_number, verbose=1)
 {
   sink("log.txt", append=FALSE, split=TRUE) # begin to record log
   error_log_function <- function() {
@@ -42,10 +44,10 @@ copy_assemble<-function(filename,copy_number)
         seqinr::write.fasta(sequences = c(Consensus_seq[i], Consensus_seq[i+copy_number+j-l]), names(c(Consensus_seq[i], Consensus_seq[i+copy_number])),file.out = paste0("cnx_",i,"_",i+copy_number+j-l,".fasta"))
         ambiguity_num <- append(ambiguity_num, sum(as.integer(stringr::str_count(as.character(ConsensusSequence(readDNAStringSet(paste0("cnx_",i,"_",i+copy_number+j-l,".fasta"), format="fasta",nrec=-1L, skip=0L),
                                                                                                        threshold = 0.4,ambiguity = TRUE, noConsensusChar = "N")), c("M", "K", "R", "Y","N","W", "S", "H", "V", "D", "B")))))
-        cat(paste0("Matching sequences ",i, " & ", i+copy_number+j-l, "\n"))
+        if (verbose) { cat(paste0("Matching sequences ",i, " & ", i+copy_number+j-l, "\n"))}
       }
-      cat("Number of ambiguous sites for each match:", ambiguity_num, "\n")
-      cat(paste0("--- The pair ", which(as.numeric(ambiguity_num)==min(as.numeric(ambiguity_num))), " has fewer ambiguous sites and should be assembled together\n"))
+      if (verbose) { cat("Number of ambiguous sites for each match:", ambiguity_num, "\n")}
+      if (verbose) { cat(paste0("--- The pair ", which(as.numeric(ambiguity_num)==min(as.numeric(ambiguity_num))), " has fewer ambiguous sites and should be assembled together\n"))}
 
       seq_to_con <- append(seq_to_con, paste0("A",i,"B_A",i+copy_number+which(as.numeric(ambiguity_num)==min(as.numeric(ambiguity_num)))-l,"B"))
     }
@@ -54,7 +56,7 @@ copy_assemble<-function(filename,copy_number)
 
   unlink(list.files(pattern="cnx_")) # Delete all intermediate files whose names begin with "cnx_"
 
-  cat("*************************************************************************\n")
+  if (verbose) { cat("*************************************************************************\n")}
   # To find out which sequences belong to which gene copy
   Copy_list <- data.frame()
   for (i in 1:copy_number) {
@@ -75,7 +77,6 @@ copy_assemble<-function(filename,copy_number)
     }
   }
 
-
   cat("--- Sequences involved in the assembling of multiple gene copies: ", str_sort(unique(seq_list), numeric=TRUE), "\n")
   cat("Warning! If there are sequences involved in the assembling of multiple gene copies, please check your input file carefully and try to do the assembling again or do it manually!\n")
 
@@ -92,7 +93,7 @@ copy_assemble<-function(filename,copy_number)
   seqinr::write.fasta(sequences = all_copies_final, names(all_copies_final),file.out=paste0("All_final_copies.fasta"))
   unlink(list.files(pattern="_final.fasta"))
 
-  cat("*************************************************************************\n")
+  if (verbose) { cat("*************************************************************************\n")}
   cat("Run finished!\n")
   beepr::beep(sound = 1, expr = NULL) # make a sound when run finishes
   options("error" = error_log_function)

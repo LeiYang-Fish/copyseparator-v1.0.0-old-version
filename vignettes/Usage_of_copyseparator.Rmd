@@ -1,8 +1,8 @@
 ---
-title: "NAME-OF-VIGNETTE"
+title: "Usage_of_copyseparator"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{NAME-OF-VIGNETTE}
+  %\VignetteIndexEntry{Usage_of_copyseparator}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -4,7 +4,7 @@
 \alias{copy_validate}
 \title{copy_validate}
 \usage{
-copy_validate(filename, copy_number, read_length)
+copy_validate(filename, copy_number, read_length, verbose = 1)
 }
 \arguments{
 \item{filename}{A DNA alignment in fasta format that contains sequences of two or more gene copies.}
@@ -12,10 +12,12 @@ copy_validate(filename, copy_number, read_length)
 \item{copy_number}{An integer (e.g. 2,3, or 4) giving the number of gene copies in the input file.}
 
 \item{read_length}{An integer (e.g. 250, or 300) giving the read length of your Next-generation Sequencing data.}
+
+\item{verbose}{Turn on (verbose=1; default) or turn off (verbose=0) the output.}
 }
 \value{
-A histogram in pdf format showing the comparison between the distance among neighboring variable sites and the read length.
+A histogram in pdf format showing the relationships between the physical distance between neighboring variable sites and read length.
 }
 \description{
-This function checks if chimeric sequences may have been formed during the assembling of gene copies.
+A tool to help identify incorrectly assembled chimeric sequences.
 }

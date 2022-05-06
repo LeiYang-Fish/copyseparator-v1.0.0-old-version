@@ -4,16 +4,18 @@
 \alias{copy_assemble}
 \title{copy_assemble}
 \usage{
-copy_assemble(filename, copy_number)
+copy_assemble(filename, copy_number, verbose = 1)
 }
 \arguments{
-\item{filename}{A fasta alignment of a small number of overlapping DNA sequences (results from "copy_separate") covering the entire length of the target gene.}
+\item{filename}{A fasta alignment of a small number of overlapping DNA sequences (results from "copy_separate") covering the entire length of the target gene. Check the alignment carefully before proceeding.}
 
-\item{copy_number}{An integer (e.g. 2,3, or 4) giving the expected number of gene copies. Must be the same value as used for "copy_separate".}
+\item{copy_number}{An integer (e.g. 2,3, or 4) giving the anticipated number of gene copies. Must be the same value as used for "copy_separate".}
+
+\item{verbose}{Turn on (verbose=1; default) or turn off (verbose=0) the output.}
 }
 \value{
-A fasta alignment of assembled sequences of the expected number of full-length gene copies.
+A fasta alignment of the anticipated number of full-length gene copies.
 }
 \description{
-This function assembles a small number of overlapping DNA sequences into long gene copies
+Assembles a small number of overlapping DNA sequences into their respective gene copies.
 }
