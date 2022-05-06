@@ -7,7 +7,7 @@
 copy_validate(filename, copy_number, read_length, verbose = 1)
 }
 \arguments{
-\item{filename}{A DNA alignment in fasta format that contains sequences of two or more gene copies.}
+\item{filename}{A DNA alignment in fasta format that contains sequences of two or more gene copies (e.g. results from "copy_assemble").}
 
 \item{copy_number}{An integer (e.g. 2,3, or 4) giving the number of gene copies in the input file.}
 

@@ -2,7 +2,7 @@
 #'
 #' @description A tool to help identify incorrectly assembled chimeric sequences.
 #'
-#' @param filename A DNA alignment in fasta format that contains sequences of two or more gene copies.
+#' @param filename A DNA alignment in fasta format that contains sequences of two or more gene copies (e.g. results from "copy_assemble").
 #'
 #' @param copy_number An integer (e.g. 2,3, or 4) giving the number of gene copies in the input file.
 #'
