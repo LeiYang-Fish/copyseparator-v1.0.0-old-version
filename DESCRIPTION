@@ -1,7 +1,7 @@
 Package: copyseparator
 Type: Package
 Title: Assembling Long Gene Copies from Short Read Data
-Version: 1.0
+Version: 1.0.0
 Author: Lei Yang
 Maintainer: Lei Yang <leiyangslu@gmail.com>
 Description: Assembles two or more gene copies from short-read Next-Generation Sequencing data. Works best when there are only two gene copies and read length >=250bp. High and relatively even coverage are important.

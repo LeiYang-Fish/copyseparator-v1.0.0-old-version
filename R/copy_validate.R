@@ -21,7 +21,7 @@
 #' @importFrom beepr beep
 #'
 #' @export copy_validate
-#'
+
 
 copy_validate<-function(filename,copy_number,read_length, verbose=1)
 {
