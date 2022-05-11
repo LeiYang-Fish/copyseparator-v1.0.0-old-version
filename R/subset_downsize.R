@@ -29,10 +29,10 @@ subset_downsize<-function(filename,read_length,overlap, verbose=1)
 
   if (read_length<250) warning ("This method is designed for read length 250bp or longer. Short reads can easily result in chimeric sequences.")
 
-  NGS_reads <- seqinr::read.fasta(file = filename,seqtype = "DNA", as.string = TRUE,forceDNAtolower = FALSE,set.attributes = FALSE)
+  NGSreads <- seqinr::read.fasta(file = filename,seqtype = "DNA", as.string = TRUE,forceDNAtolower = FALSE,set.attributes = FALSE)
 
-  total_reads <- length(NGS_reads); if (verbose) { cat(paste0("Total number of reads imported = ",total_reads,"\n"))}
-  alignment_length <- nchar(NGS_reads[[1]]); if (verbose) { cat(paste0("Length of the alignment = ",alignment_length,"\n"))}
+  total_reads <- length(NGSreads); if (verbose) { cat(paste0("Total number of reads imported = ",total_reads,"\n"))}
+  alignment_length <- nchar(NGSreads[[1]]); if (verbose) { cat(paste0("Length of the alignment = ",alignment_length,"\n"))}
 
   if (verbose) { cat(paste0("Read length = ",read_length,"\n"))}
   if (verbose) { cat(paste0("Overlap between adjacent subsets = ",overlap,"\n"))}
@@ -43,7 +43,7 @@ subset_downsize<-function(filename,read_length,overlap, verbose=1)
   number_of_subsets <- length(begin_number); if (verbose) { cat(paste0("Total number of subsets = ",number_of_subsets,"\n"))}
 
   for (i in begin_number) {
-    subset_original <- lapply(1:total_reads, function(x) {substr(NGS_reads[x],i,i+read_length-1)}) # begin to subdivide the big alignment into subsets, each has the length of read_length
+    subset_original <- lapply(1:total_reads, function(x) {substr(NGSreads[x],i,i+read_length-1)}) # begin to subdivide the big alignment into subsets, each has the length of read_length
     seqinr::write.fasta(sequences = subset_original, names = 1:length(subset_original), file.out = paste0("Subset_",which(begin_number==i),"_original_size.fasta"))
     subset_small <- subset_original[which(as.character(lapply(1:total_reads, function(x) {substr(subset_original[x],1,10)}))!="----------")]
     subset_smaller <- subset_small[which(as.character(lapply(1:length(subset_small), function(x) {substr(subset_small[x],200,209)}))!="----------")]
@@ -52,7 +52,6 @@ subset_downsize<-function(filename,read_length,overlap, verbose=1)
     seqinr::write.fasta(sequences = subset_smallest, names = 1:length(subset_smallest), file.out = paste0("Subset_",which(begin_number==i),"_downsized.fasta"))
   }
 
-  Subsets <- stringr::str_sort(list.files(pattern="_downsized.fasta"), numeric = TRUE)
   cat("Subsetting and downsizing finished!\n")
   beepr::beep(sound = 1, expr = NULL) # make a sound when run finishes
 }

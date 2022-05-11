@@ -1,7 +1,7 @@
 #' Provides example dataset for major functions. They are located at: /inst/extdata
 #'
 #' The example file "Sucker.fasta" is for functions "copy_separate" and "subset_downsize". It is the results of 28,718 Illumina reads mapped to a reference gene (length: ~900bp).
-#' The data were obtained by adding adapters to the PCR amplicons and sent for sequencing on the Illumina MiSeq platform (2x300).
+#' The data were obtained by adding P5 & P7 adapters to the sheared PCR amplicons and sent for sequencing on the Illumina MiSeq platform (2x300).
 #' The reference sequence and reads mapped outside the boundaries defined by both PCR primers have been removed after mapping using Geneious.
 #' The example file "Sucker_combined_consensus_2copies_overlap225.txt" is for the function "copy_assemble". It is the result of running "copy_separate".
 #' The example file "Subset_1_downsized.fasta" is for the function "copy_detect". It is one of the 12 subsets from the results of "copy_separate".

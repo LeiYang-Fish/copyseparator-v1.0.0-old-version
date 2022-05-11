@@ -34,16 +34,16 @@ copy_detect<-function(filename,copy_number, verbose=1)
     cat(geterrmessage(), file="Error_log.txt", append=T)
   }
 
-  if (copy_number<=1) stop ("The expected copy number must be a number larger than one!")
+  if (copy_number<=1) stop ("The anticipated copy number must be a number larger than one!")
 
-    Subset <- ape::as.character.DNAbin(ape::read.FASTA(file=filename, type = "DNA"))
+    Sub_set <- ape::as.character.DNAbin(ape::read.FASTA(file=filename, type = "DNA"))
     if (verbose) { cat(paste0("Clustering analyses for ", filename,"\n"))}
 
     filename_short <- gsub("[:.:].*","", filename) # remove file extensions, e.g. ".fasta", ".txt"
 
     # find the threshold range for OTU to find the major clusters (number=copy_number) for each subset
     for (m in seq(0.3,1, by = 0.1)) {
-      Subset_OTU <- kmer::otu(Subset, k = 5, threshold = m, method = "central", nstart = 20)
+      Subset_OTU <- kmer::otu(Sub_set, k = 5, threshold = m, method = "central", nstart = 20)
       if (verbose) { cat(paste0("threshold = ",m),"\n")}
       if (verbose) { cat(unique(Subset_OTU),"\n")}
       if (length(unique(Subset_OTU))>=copy_number) {break}
@@ -51,7 +51,7 @@ copy_detect<-function(filename,copy_number, verbose=1)
 
     # try different threshold values in the range found above
     for (i in seq(m-0.09,m, by = 0.01)) {
-      Subset_OTU <- kmer::otu(Subset, k = 5, threshold = i, method = "central", nstart = 20)
+      Subset_OTU <- kmer::otu(Sub_set, k = 5, threshold = i, method = "central", nstart = 20)
       if (verbose) { cat(paste0("threshold = ",i),"\n")}
       if (verbose) { cat(unique(Subset_OTU),"\n")}
       if (length(unique(Subset_OTU))>=copy_number) {break}
@@ -65,7 +65,7 @@ copy_detect<-function(filename,copy_number, verbose=1)
     if (verbose) { cat(reads_each_cluster,"\n")}
 
     for (j in (1:copy_number)) {
-      Picked_cluster <- Subset[which(Subset_OTU==unique(Subset_OTU)[which(reads_each_cluster==sort(reads_each_cluster)[length(unique(Subset_OTU))-j+1])])]
+      Picked_cluster <- Sub_set[which(Subset_OTU==unique(Subset_OTU)[which(reads_each_cluster==sort(reads_each_cluster)[length(unique(Subset_OTU))-j+1])])]
       seqinr::write.fasta(sequences = Picked_cluster,
                 names = labels(Picked_cluster),
                 file.out = paste0(filename_short,"_cluster_",j,".fasta"))
@@ -77,10 +77,11 @@ copy_detect<-function(filename,copy_number, verbose=1)
     }
 
     # put together all the consensus sequences into one file
-    Consensus_list <- stringr::str_sort(list.files(pattern="_consensus.fasta"), numeric = TRUE)
-    All_consensus <- lapply(1:length(Consensus_list), function (x) seqinr::read.fasta(file = Consensus_list[x], seqtype = "DNA",
-                                                                              as.string = TRUE,forceDNAtolower = FALSE,set.attributes = FALSE, whole.header = TRUE))
-    seqinr::write.fasta(sequences=All_consensus, names=Consensus_list, file.out=paste0(filename_short,"_consensus_list.fasta"))
+    All_consensus <- lapply(1:copy_number, function (x) seqinr::read.fasta(file = paste0(filename_short,"_cluster_",x,"_consensus.fasta"), seqtype = "DNA",
+                                                                                      as.string = TRUE,forceDNAtolower = FALSE,set.attributes = FALSE, whole.header = TRUE))
+
+    seqinr::write.fasta(sequences=All_consensus, names=names(as.data.frame(All_consensus)), file.out=paste0(filename_short,"_consensus_list.fasta"))
+
     cat("Run finished!\n")
     beepr::beep(sound = 1, expr = NULL) # make a sound when run finishes
     options("error" = error_log_function)

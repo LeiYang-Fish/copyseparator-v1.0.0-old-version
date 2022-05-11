@@ -1,5 +1,2 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^cran-comments\.md$
-^\.travis\.yml$
-^CRAN-SUBMISSION$

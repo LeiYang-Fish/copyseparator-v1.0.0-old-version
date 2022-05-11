@@ -46,14 +46,14 @@ copy_validate<-function(filename,copy_number,read_length, verbose=1)
   dist_final <- sort(as.numeric(all_dist))
 
   if (max(dist_final)>read_length)
-   cat ("Warning! Distance between variable sites is larger than the read length (see the plot in pdf), chimeric sequences may have formed during assembling!", "\n")
+   cat ("Warning! Distance between some neighboring variable sites is larger than the read length (see the plot in pdf), chimeric sequences may have formed during assembling!", "\n")
 
   text_to_show <- "read_length"
 
   grDevices::pdf(file="Distance between neighboring variable sites VS. Read length.pdf", width=8, height=8)
 
   graphics::hist(dist_final,main="Distance between neighboring variable sites VS. Read length", xlab="Base pairs",
-       ylim=c(0,length(dist_final)/2),xlim=c(0,read_length+100),breaks=20,col="blue")
+       ylim=c(0,length(dist_final)/2),xlim=c(0,read_length+100),breaks="Sturges",col="blue")
 
   graphics::abline(v=read_length, col="red", lwd=3, lty=2)
   graphics::text(read_length, length(dist_final)/2, text_to_show, pos = 4, offset = 0.5)
