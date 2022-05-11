@@ -70,7 +70,7 @@ Subsets <- stringr::str_sort(list.files(pattern="_downsized.fasta"), numeric = T
 # for each of the subset_1, 2, 3...
 for (i in 1:length(Subsets)) {
   if (verbose) { cat("********************************************\n")}
-  Sub_set <- as.character.DNAbin(read.FASTA(file=Subsets[i], type = "DNA"))
+  Sub_set <- ape::as.character.DNAbin(ape::read.FASTA(file=Subsets[i], type = "DNA"))
   if (verbose) { cat((paste0("Clustering analyses for the Subset ", i,"\n")))}
 
   # find the threshold range for OTU to find the major clusters (number=copy_number) for each subset

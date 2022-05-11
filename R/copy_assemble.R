@@ -42,7 +42,7 @@ copy_assemble<-function(filename,copy_number, verbose=1)
       ambiguity_num <- character(0)
       for (j in 1:copy_number) {
         seqinr::write.fasta(sequences = c(Consensus_seq[i], Consensus_seq[i+copy_number+j-l]), names(c(Consensus_seq[i], Consensus_seq[i+copy_number])),file.out = paste0("cnx_",i,"_",i+copy_number+j-l,".fasta"))
-        ambiguity_num <- append(ambiguity_num, sum(as.integer(stringr::str_count(as.character(ConsensusSequence(readDNAStringSet(paste0("cnx_",i,"_",i+copy_number+j-l,".fasta"), format="fasta",nrec=-1L, skip=0L),
+        ambiguity_num <- append(ambiguity_num, sum(as.integer(stringr::str_count(as.character(DECIPHER::ConsensusSequence(Biostrings::readDNAStringSet(paste0("cnx_",i,"_",i+copy_number+j-l,".fasta"), format="fasta",nrec=-1L, skip=0L),
                                                                                                        threshold = 0.4,ambiguity = TRUE, noConsensusChar = "N")), c("M", "K", "R", "Y","N","W", "S", "H", "V", "D", "B")))))
         if (verbose) { cat(paste0("Matching sequences ",i, " & ", i+copy_number+j-l, "\n"))}
       }
@@ -77,7 +77,7 @@ copy_assemble<-function(filename,copy_number, verbose=1)
     }
   }
 
-  cat("--- Sequences involved in the assembling of multiple gene copies: ", str_sort(unique(seq_list), numeric=TRUE), "\n")
+  cat("--- Sequences involved in the assembling of multiple gene copies: ", stringr::str_sort(unique(seq_list), numeric=TRUE), "\n")
   cat("Warning! If there are sequences involved in the assembling of multiple gene copies, please check your input file carefully and try to do the assembling again or do it manually!\n")
 
 
