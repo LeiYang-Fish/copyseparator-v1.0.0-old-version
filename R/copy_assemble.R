@@ -30,7 +30,7 @@ copy_assemble<-function(filename,copy_number, verbose=1)
     cat(geterrmessage(), file="Error_log.txt", append=T)
   }
 
-  if (copy_number<=1) stop ("The expected copy number must be a number larger than one!")
+  if (copy_number<=1) stop ("The anticipated copy number must be a number larger than one!")
 
   Consensus_seq <- seqinr::read.fasta(file = filename,seqtype = "DNA", as.string = TRUE,forceDNAtolower = FALSE,set.attributes = FALSE)
 
@@ -54,7 +54,7 @@ copy_assemble<-function(filename,copy_number, verbose=1)
   }
   seq_to_con1 <- seq_to_con[stringr::str_order(seq_to_con, decreasing = FALSE, na_last = TRUE, locale = "en",numeric = TRUE)] # order numerically
 
-  unlink(list.files(pattern="cnx_")) # Delete all intermediate files whose names begin with "cnx_"
+  unlink("cnx_*") # Delete all intermediate files whose names begin with "cnx_"
 
   if (verbose) { cat("*************************************************************************\n")}
   # To find out which sequences belong to which gene copy
@@ -91,7 +91,7 @@ copy_assemble<-function(filename,copy_number, verbose=1)
     all_copies_final <- append(all_copies_final, seqinr::read.fasta (paste0("Copy_",i,"_final.fasta"), seqtype = "DNA", as.string = TRUE,forceDNAtolower = FALSE,set.attributes = FALSE))
   }
   seqinr::write.fasta(sequences = all_copies_final, names(all_copies_final),file.out=paste0("All_final_copies.fasta"))
-  unlink(list.files(pattern="_final.fasta"))
+  unlink("*_final.fasta")
 
   if (verbose) { cat("*************************************************************************\n")}
   cat("Run finished!\n")
