@@ -19,7 +19,8 @@
 #' @importFrom beepr beep
 #'
 #' @export subset_downsize
-#'
+#' 
+
 subset_downsize<-function(filename,read_length,overlap, verbose=1)
 {
   sink("log.txt", append=FALSE, split=TRUE) # begin to record log
