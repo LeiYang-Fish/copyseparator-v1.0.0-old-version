@@ -4,7 +4,7 @@ Title: Assembling Long Gene Copies from Short Read Data
 Version: 1.0.0
 Author: Lei Yang
 Maintainer: Lei Yang <leiyangslu@gmail.com>
-Description: Assembles two or more gene copies from short-read Next-Generation Sequencing data. Works best when there are only two gene copies and read length >=250bp. High and relatively even coverage are important.
+Description: Assembles two or more gene copies from short-read Next-Generation Sequencing data. Works best when there are only two gene copies and read length >=250 base pairs. High and relatively even coverage are important.
 License: GPL-2
 URL: https://github.com/LeiYang-Fish/copyseparator
 BugReports: https://github.com/LeiYang-Fish/copyseparator/issues

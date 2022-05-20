@@ -12,25 +12,16 @@
 #' @format fasta
 #' @references The data was collected by the author and is unpublished.
 #' @keywords dataset
-#' @examples
-#'
-
-## copy_separate
-copy_separate("inst/extdata/toydata.fasta",2,300,225,1)
-
-## copy_assemble
-copy_assemble("inst/extdata/combined_con.fasta",2,1)
-
-## copy_validate
-copy_validate("inst/extdata/Final_two_copies.fasta",2,300,1)
-
-## subset_downsize
-subset_downsize("inst/extdata/toydata.fasta", 300,225,1)
-
-## copy_detect
-copy_detect("inst/extdata/toysubset.fasta",2,1)
-
-
+#' @examples 
+#' copy_separate("inst/extdata/toydata.fasta",2,300,225,1)
+#' @examples 
+#' copy_assemble("inst/extdata/combined_con.fasta",2,1)
+#' @examples 
+#' copy_validate("inst/extdata/Final_two_copies.fasta",2,300,1)
+#' @examples 
+#' subset_downsize("inst/extdata/toydata.fasta", 300,225,1)
+#' @examples 
+#' copy_detect("inst/extdata/toysubset.fasta",2,1)
 
 ## delete all resulting files after testing
 unlink("*.fasta")
