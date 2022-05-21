@@ -23,3 +23,9 @@ A fasta alignment of a small number of overlapping DNA sequences covering the en
 \description{
 Separates two or more gene copies from short-read Next-Generation Sequencing data into a small number of overlapping DNA sequences.
 }
+\examples{
+\dontrun{
+copy_separate("inst/extdata/toydata.fasta",2,300,225,1)
+}
+
+}

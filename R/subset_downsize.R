@@ -17,6 +17,11 @@
 #' @importFrom stringr str_count str_sort
 #'
 #' @importFrom beepr beep
+#' 
+#' @examples 
+#' \dontrun{
+#' subset_downsize("inst/extdata/toydata.fasta", 300,225,1)
+#' }
 #'
 #' @export subset_downsize
 #' 

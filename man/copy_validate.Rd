@@ -21,3 +21,9 @@ A histogram in pdf format showing the relationships between the physical distanc
 \description{
 A tool to help identify incorrectly assembled chimeric sequences.
 }
+\examples{
+\dontrun{
+copy_validate("inst/extdata/Final_two_copies.fasta",2,300,1)
+}
+
+}

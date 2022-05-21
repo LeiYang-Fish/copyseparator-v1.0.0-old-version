@@ -19,3 +19,9 @@ A fasta alignment of the anticipated number of gene copies.
 \description{
 Separates two or more gene copies from a single subset of short reads.
 }
+\examples{
+\dontrun{
+copy_detect("inst/extdata/toysubset.fasta",2,1)
+}
+
+}

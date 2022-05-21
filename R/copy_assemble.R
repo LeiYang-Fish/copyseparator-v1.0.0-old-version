@@ -19,6 +19,11 @@
 #' @importFrom DECIPHER ConsensusSequence
 #'
 #' @importFrom beepr beep
+#' 
+#' @examples 
+#' \dontrun{
+#' copy_assemble("inst/extdata/combined_con.fasta",2,1)
+#' }
 #'
 #' @export copy_assemble
 #'

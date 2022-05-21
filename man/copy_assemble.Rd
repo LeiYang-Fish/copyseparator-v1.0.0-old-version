@@ -19,3 +19,9 @@ A fasta alignment of the anticipated number of full-length gene copies.
 \description{
 Assembles a small number of overlapping DNA sequences into their respective gene copies.
 }
+\examples{
+\dontrun{
+copy_assemble("inst/extdata/combined_con.fasta",2,1)
+}
+
+}

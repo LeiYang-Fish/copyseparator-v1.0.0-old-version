@@ -21,3 +21,9 @@ A number of overlapping subsets (before and after downsizing) of the input align
 \description{
 Subdivides the imported read alignment into subsets and then downsizes each subset by deleting those sequences that have too many gaps or missing data.
 }
+\examples{
+\dontrun{
+subset_downsize("inst/extdata/toydata.fasta", 300,225,1)
+}
+
+}

@@ -23,6 +23,11 @@
 #' @importFrom DECIPHER ConsensusSequence
 #'
 #' @importFrom beepr beep
+#' 
+#' @examples 
+#' \dontrun{
+#' copy_detect("inst/extdata/toysubset.fasta",2,1)
+#' }
 #'
 #' @export copy_detect
 #'

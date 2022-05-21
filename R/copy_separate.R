@@ -27,6 +27,11 @@
 #' @importFrom DECIPHER ConsensusSequence
 #'
 #' @importFrom beepr beep
+#' 
+#' @examples 
+#' \dontrun{
+#' copy_separate("inst/extdata/toydata.fasta",2,300,225,1)
+#' }
 #'
 #' @export copy_separate
 #'
