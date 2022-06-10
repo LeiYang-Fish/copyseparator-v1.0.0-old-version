@@ -5,11 +5,13 @@ install.packages("copyseparator")
 https://github.com/LeiYang-Fish/copyseparator_more_examples
 
 # What if one or a few subsets did not get the anticipated number of gene copies?
-If "copy_number" is set as 2, copyseparator will pick two of the largest clusters and assume that they represent the two gene copies. Most times, this is the case. Occasionally, for one or a few subsets, the picked two clusters both represent the same gene copy.
+If "copy_number" is set as 2, copyseparator will pick two of the largest clusters and assume that they represent the two gene copies. Most times, this is the case. Occasionally, for one or a few subsets, the picked two clusters both represent the same gene copy. When this happens, below is what you may do.
 
-You may set "copy_number" as 3 or 4 and re-run "copy_separate".
+1. If the value of "overlap" is high (lots of overlaps between subsets), you may ignore these subsets and can still assemble the gene copies successfully.
 
-Or you can run "copy_detect" for specific subsets by setting the "copy_number" as 3 or 4.
+2. You may set "copy_number" as 3 or 4 and re-run "copy_separate".
+
+3. Or you can run "copy_detect" for specific subsets by setting the "copy_number" as 3 or 4.
 
 # How to cite copyseparator
 Run the following to get the appropriate citation for the version you’re using:
