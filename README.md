@@ -1,10 +1,12 @@
 # How to install copyseparator
 
-install.packages("copyseparator")
+  install.packages("copyseparator")
 
-# Please cite copyseparator. Run the following to get the appropriate citation for the version you’re using:
+# How to cite copyseparator
 
-citation(package = "copyseparator")
+Run the following to get the appropriate citation for the version you’re using:
+
+  citation(package = "copyseparator")
 
 To cite package ‘copyseparator’ in publications use:
 
