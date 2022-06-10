@@ -1,7 +1,7 @@
 # How to install copyseparator
 install.packages("copyseparator")
   
-# Examples on how to run copyseparator
+# Example on how to run copyseparator
 https://github.com/LeiYang-Fish/copyseparator_more_examples
 
 # How to assemble gene copies if "copy_assemble" fails
