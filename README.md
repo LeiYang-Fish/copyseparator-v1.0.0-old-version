@@ -1,6 +1,9 @@
 # How to install copyseparator
 
   install.packages("copyseparator")
+  
+# Examples on how to run copyseparator
+https://github.com/LeiYang-Fish/copyseparator_more_examples
 
 # How to cite copyseparator
 
