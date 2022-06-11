@@ -4,7 +4,7 @@ install.packages("copyseparator")
 # Example on how to run copyseparator
 https://github.com/LeiYang-Fish/copyseparator_more_examples
 
-Due to the size limitation (25M) imposed by GitHub, only one example is provided here.
+Due to the size limitation (25M) imposed by GitHub, only one example is provided in the above folder.
 
 # What can copyseparator do?
 Separate and assemble two or more gene copies from short-read Next-Generation Sequencing data for polyploids, gene families, mixed/contaminated samples etc.
