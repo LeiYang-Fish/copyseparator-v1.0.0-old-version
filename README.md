@@ -24,7 +24,7 @@ Theoretically, if the coverage is high and relatively even, there is no limitati
 Mapping to a reference can organize the short reads in order. In this way, the subsets, the picked clusters and their respective consensus sequences, and the assembled gene copy sequences can all be in the correct order.
 
 # Why the read-length has to be 250bp or longer?
-During assembling, short reads can easily result in chimeric sequences. Contact me if you really want to use copyseparator for NGS data with a read length < 250bp.
+During assembling, short reads can easily result in chimeric sequences. Email me at leiyangslu@gmail.com if you really want to use copyseparator for NGS data with a read length < 250bp.
 
 # How to assemble gene copies if "copy_assemble" fails
 I use SeaView (http://doua.prabi.fr/software/seaview) to examine the results from "copy_separate". I prefer to assemble gene copies by moving sequences around and link gene copies by eye. It just like assembling the forward and reverse sequences from Sanger sequencing. Even if you prefer to use "copy_assemble", you still need to check the alignment first. Pay special attention to the nucleotide overhangs introduced by mistake during the calculation of consensus sequences of picked clusters.
@@ -37,6 +37,8 @@ If "copy_number" is set as 2, copyseparator will pick two of the largest cluster
 2. You may set "copy_number" as 3 or 4 and re-run "copy_separate".
 
 3. Or you can run "copy_detect" for specific subsets by setting the "copy_number" as 3 or 4.
+
+The latest version of copyseparator (not on CRAN yet) can handle this issue better. It will pick 3 or 4 clusters for those problematic subsets but only pick 2 for all other subsets. Email me at leiyangslu@gmail.com to request for R scripts.
 
 # How to cite copyseparator
 Run the following to get the appropriate citation for the version you’re using:
