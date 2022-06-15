@@ -38,7 +38,7 @@ If "copy_number" is set as 2, copyseparator will pick two of the largest cluster
 
 3. Or you can run "copy_detect" for specific subsets by setting the "copy_number" as 3 or 4.
 
-The latest version of copyseparator (not on CRAN yet) can handle this issue better. It will pick 3 or 4 clusters for those problematic subsets but only pick 2 for all other subsets. Email me at leiyangslu@gmail.com to request for R scripts.
+The latest version of copyseparator (not on CRAN yet) can handle this issue better. It will pick 3 or 4 clusters for those problematic subsets but only pick 2 for all other subsets. Email me at leiyangslu@gmail.com to request R scripts.
 
 # How to cite copyseparator
 Run the following to get the appropriate citation for the version you’re using:
