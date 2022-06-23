@@ -32,13 +32,13 @@ I use SeaView (http://doua.prabi.fr/software/seaview) to examine the results fro
 # What if one or a few subsets did not get the anticipated number of gene copies?
 If "copy_number" is set as 2, copyseparator will pick two of the largest clusters and assume that they represent the two gene copies. Most times, this is the case. Occasionally, for one or a few subsets, the picked two clusters both represent the same gene copy. When this happens, below is what you may do.
 
-1. If the value of "overlap" is high (lots of overlaps between subsets), you may ignore these subsets and can still assemble the gene copies successfully.
+1. If the value of "overlap" is high (lots of overlaps between subsets), you may simply ignore these subsets and can still assemble the full gene copies successfully.
 
 2. You may set "copy_number" as 3 or 4 and re-run "copy_separate".
 
 3. Or you can run "copy_detect" for specific subsets by setting the "copy_number" as 3 or 4.
 
-**NOTE:** The latest version of copyseparator (not on CRAN yet) can handle this issue better. It will pick all large (>10 reads) clusters for those problematic subsets but only pick 2 for all other subsets. Eventually, only 2 different sequences (consensus sequence of picked clusters) will be retained for each subset. Email me at leiyangslu@gmail.com to request R scripts.
+**NOTE:** The latest version of copyseparator (not on CRAN yet) can handle this issue better. It will pick all large clusters for those problematic subsets but only pick 2 for all other subsets. Eventually, only 2 different sequences (consensus sequence of picked clusters) will be retained for each subset. Email me at leiyangslu@gmail.com to request R scripts.
 
 # How to cite copyseparator
 Run the following to get the appropriate citation for the version you’re using:
