@@ -1,3 +1,5 @@
+**NOTE:** The latest version of copyseparator is almost ready but not on CRAN yet. Email me at leiyangslu@gmail.com to request R scripts.
+
 # How to install copyseparator
 install.packages("copyseparator")
   
