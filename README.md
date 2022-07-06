@@ -1,4 +1,4 @@
-**NOTE:** The latest version of copyseparator works better than the current version. It has not been put on CRAN yet. Email me at leiyangslu@gmail.com to request R scripts.
+**NOTE:** The latest version of copyseparator (https://github.com/LeiYang-Fish/copyseparator) works better than the current version. It has been accepted by CRAN and will be available to download soon.
 
 # How to install copyseparator
 install.packages("copyseparator")
