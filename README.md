@@ -1,4 +1,4 @@
-**NOTE:** The latest version (1.1.0) of copyseparator (https://github.com/LeiYang-Fish/copyseparator) works better than the current version. It is available on CRAN.
+**NOTE:** The latest version (1.2.0) of copyseparator (https://github.com/LeiYang-Fish/copyseparator) works better than the current version. It is available on CRAN.
 
 # How to install copyseparator
 install.packages("copyseparator")
